@@ -1,4 +1,4 @@
-https://tl1.knightsofcode.net/t/7/11/blog.html#eAlpacaHW
+https://kwynn.com/t/7/11/blog.html#eAlpacaHW
 
 https://alpaca.markets/docs/trading/getting-started/
 require('/opt/kwynn/js/utils.js'); // https://github.com/kwynncom/kwynn-php-general-utils/blob/master/js/utils.js
