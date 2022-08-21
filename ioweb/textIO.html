@@ -14,21 +14,25 @@
 
 <script>
 
-class exampleIOSubclass extends kwStandardTextIOCl {
-    constructor() { super(byid('theta10'), 'server.php', isResOK);   }
+class exampleIOSubclass extends kwStdWebIOCl {
+    constructor(e) { super(e, 'server.php', (res) => { return this.isResOK(res, e);   }); }
     oninput(e) {  super.oninput(e, {'v' : e.value});    }
+    isResOK(res, e) {
+        if (res['stdtextIOTestRet'] !== 'OK') return false;
+        if (res['retv'] !== e.value) return false;
+        return true;
+    }
 }
 
 onDOMLoad(() => { 
-    new exampleIOSubclass(); 
-    byid('theta10').focus();
+    const e = byid('theta10');
+    new exampleIOSubclass(e); 
+    e.focus();
+    
+    new exampleIOSubclass(byid('sel10'));
 });
 
-function isResOK(res) {
-    if (res['stdtextIOTestRet'] !== 'OK') return false;
-    if (res['retv'] !== byid('theta10').value) return false;
-    return true;
-}
+
 
 </script>
 
@@ -40,7 +44,7 @@ function isResOK(res) {
     <textarea rows='10' cols='50' id='theta10'></textarea>
         </div>
         <div>
-    <select>
+    <select id='sel10'>
         <option>A</option>
         <option>B</option>
         
