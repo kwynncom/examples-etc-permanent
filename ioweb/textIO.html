@@ -16,7 +16,12 @@
 
 class exampleIOSubclass extends kwStdWebIOCl {
     constructor(e) { super(e, 'server.php', (res) => { return this.isResOK(res, e);   }); }
-    oninput(e) {  super.oninput(e, {'v' : e.value});    }
+    oninput(e) {  
+        
+        const miscd = {'version' : '8/20 22:17'};
+        
+        super.oninput(e, miscd);    
+    }
     isResOK(res, e) {
         if (res['stdtextIOTestRet'] !== 'OK') return false;
         if (res['retv'] !== e.value) return false;
