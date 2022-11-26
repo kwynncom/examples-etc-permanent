@@ -42,7 +42,11 @@ class dateEx {
 		$o = $oin;
 		
 		$fs = ['g', 'G', 'h', 'Y-m-d H:i:s'];
-		foreach($fs as $f) if (strpos($fin, $f) !== false) { $o->sub(new DateInterval('PT12H')); return $o; }
+		foreach($fs as $f) if (strpos($fin, $f) !== false) { 
+			$h = intval($o->format('G'));
+			if ($h >= 22) { $o->sub(new DateInterval('PT15H')); return $o; }
+			if ($h <  12) { $o->add(new DateInterval('PT12H')); return $o; }
+		}
 		$fs = ['j', 'd'];
 		foreach($fs as $f) if (strpos($fin, $f) !== false) { 
 			$d = intval($o->format('j'));
