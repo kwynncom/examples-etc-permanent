@@ -29,7 +29,7 @@ function cree(type) { return document.createElement(type); }
 class PHPDateFormats {
     constructor() {
         const fs = ['r', 'c', 'g:i:sa m/d',  'Y-m-d H:i:s', 'D, M d', 'l, F j, Y', 'U', 'e', 'T', 'P', 
-            'H:i:s.u', 'H:i:s.v', 'F t', 'g:i A', 'G:i A', 'n/j/y'];
+            'H:i:s.u', 'H:i:s.v', 'F t', 'g:i A', 'G:i A',  'h:i A', 'n/j/y'];
         this.send(fs);
     }
     
@@ -55,7 +55,10 @@ class PHPDateFormats {
 				const ktd = cree('td');
 				const vtd = cree('td');
 				ktd.innerHTML = key;
-				vtd.innerHTML = v;
+				let dv = v;
+				if (key === 'F t') 
+					dv += ' (last day of month)';
+				vtd.innerHTML = dv;
 				row.append(ktd);
 				row.append(vtd);
 				byid('tbody1').append(row);

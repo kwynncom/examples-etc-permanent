@@ -28,9 +28,40 @@ class dateEx {
 	private function do20($f) {
 		$ret = [];
 		$o = new DateTime();
-		if (strpos($f, 'g')) ; 
-		$ret[] = [$f => $o->format($f)];		
+		if (0) $o->setTimestamp(strtotime('November 1, 2022')); // for testing
+		$ret[] = [$f => $o->format($f)];
+		if ($mo = $this->onMod($f, $o)) {
+			$ret[] = [$f => $mo->format($f)];
+		}
+		
 		return $ret;
+	}
+	
+	private function onMod(string $fin, DateTime $oin) {
+		
+		$o = $oin;
+		
+		$fs = ['g', 'G', 'h', 'Y-m-d H:i:s'];
+		foreach($fs as $f) if (strpos($fin, $f) !== false) { $o->sub(new DateInterval('PT12H')); return $o; }
+		$fs = ['j', 'd'];
+		foreach($fs as $f) if (strpos($fin, $f) !== false) { 
+			$d = intval($o->format('j'));
+			if ($d >= 10) {
+				$s = $d - 2;
+				$o->sub(new DateInterval('P' . $s . 'D')); 
+			}
+			else { 
+				$s = 10;
+				$o->add(new DateInterval('P' . $s . 'D')); 
+			}
+			
+			return $o; 
+			
+		}
+		
+		
+		return false;
+		
 	}
 }
 
