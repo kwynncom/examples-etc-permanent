@@ -49,16 +49,17 @@ class PHPDateFormats {
     }
     
     parse(ain) {
-        // console.log(ain);
-        for (const k in ain) {
-            const row = cree('tr');            
-            const ktd = cree('td');
-            const vtd = cree('td');
-            ktd.innerHTML = k;
-            vtd.innerHTML = ain[k];
-            row.append(ktd);
-            row.append(vtd);
-            byid('tbody1').append(row);
+        for (const av in ain) {
+			for (const [key, v] of Object.entries(ain[av])) {
+				const row = cree('tr');            
+				const ktd = cree('td');
+				const vtd = cree('td');
+				ktd.innerHTML = key;
+				vtd.innerHTML = v;
+				row.append(ktd);
+				row.append(vtd);
+				byid('tbody1').append(row);
+			}
         }
         
     }
