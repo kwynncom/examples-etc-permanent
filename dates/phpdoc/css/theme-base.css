@@ -1,0 +1,107 @@
+/*!
+ * Bootstrap v2.3.2
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+
+/* The above is the starting point, from https://www.php.net/cached.php?t=1540425603&f=/styles/theme-base.css
+I mercilessly removed almost everything. */
+
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+
+
+/* Standard Tables */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin:0 0 1.5rem;
+}
+table td {
+  vertical-align:top;
+}
+
+table.standard {
+    border-collapse: collapse;
+    border-style: hidden;
+    border:1px solid #d9d9d9;
+}
+
+table.standard td,
+table.standard th {
+    border: 1px solid #d9d9d9;
+}
+
+table.standard tr:nth-child(even) td {
+    background-color: #E6E6E6;
+}
+
+table.standard th {
+    font-size: 1.125rem;
+    padding: 20px 10px 5px 10px;
+    color: #666;
+    font-weight: normal;
+}
+
+table.standard td {
+    padding: 5px 10px;
+    vertical-align: middle;
+}
+
+table.standard tr:nth-child(even) td.subr,
+table.standard tr:nth-child(even) th.subr,
+table.standard tr td.subr,
+table.standard tr th.subr,
+table.standard tr:nth-child(even) td.sub,
+table.standard tr:nth-child(even) th.sub,
+table.standard tr td.sub,
+table.standard tr th.sub {
+    background: #E6E6E6;
+}
+
+table.standard td.subr,
+table.standard th.subr {
+    text-align: right;
+}
+
+
+.center {
+    text-align:center;
+}
+
+/* {{{ Tables */
+.docs th {
+    text-align: left;
+}
+
+.docs td,
+.docs th {
+    padding: .25rem .5rem;
+}
+
+.doctable,
+.segmentedlist {
+    width: 100%;
+    margin:0 0 1.5rem;
+}
+.doctable thead tr,
+.segmentedlist thead tr {
+    border:1px solid;
+}
+.doctable tr,
+.segmentedlist tr {
+    border:1px solid;
+}
+
+/* }}} */

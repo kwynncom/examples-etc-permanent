@@ -1,0 +1,12 @@
+td,th:nth-child(1) { width: 10%; padding-left: 0.5em}
+td,th:nth-child(2) { width: 55%}
+td,th:nth-child(3) { width: 35%}
+#table1            { table-layout: fixed ;
+    width: 60% ; 
+                         
+}
+
+.topcreditDiv { margin-top: 1em; margin-bottom: 1em}
+
+/* In the following case I'm actually putting it back the way Bootstrap had it in theme-base.css */
+body { font-family: "Fira Sans", "Source Sans Pro", Helvetica, Arial, sans-serif;}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"    />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PHP date formats</title>
+
+<style>
+    body { font-family: monospace}
+    td:nth-child(1) { padding-right: 2ex }
+    th:nth-child(1) { text-align   : left }
+    td { padding-bottom: 0.5ex}
+    
+tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+tr:nth-child(even) {
+  background-color: #E6E6E6;
+}
+    
+    
+</style>
+
+<script>
+
+function byid(id)   { return document.getElementById(id); }
+function cree(type) { return document.createElement(type); }
+
+class PHPDateFormats {
+    constructor() {
+        const fs = ['r', 'c', 'g:i:sa m/d',  'Y-m-d H:i:s', 'D, M d', 'l, F j, Y', 'U', 'e', 'T', 'P', 
+            'H:i:s.u', 'H:i:s.v', 'F t', 'g:i A', 'G:i A', 'n/j/y'];
+        this.send(fs);
+    }
+    
+    send(fin) {
+        const x = new XMLHttpRequest();
+        x.open('POST', 'server.php?');
+        
+        const self = this;
+        x.onloadend = function() { 
+            const a = JSON.parse(this.responseText);
+            self.parse(a);    
+        }
+        
+        const formData = new FormData();
+        formData.append('formats',JSON.stringify(fin));  
+        x.send(formData);
+    }
+    
+    parse(ain) {
+        // console.log(ain);
+        for (const k in ain) {
+            const row = cree('tr');            
+            const ktd = cree('td');
+            const vtd = cree('td');
+            ktd.innerHTML = k;
+            vtd.innerHTML = ain[k];
+            row.append(ktd);
+            row.append(vtd);
+            byid('tbody1').append(row);
+        }
+        
+    }
+    
+}
+
+window.onload = function() { new PHPDateFormats(); }
+
+</script>
+</head>
+<body>
+
+    <div id='mres'></div>
+
+    <p><a href='phpdoc/doc.html'>official doc</a>
+        <a href='/' style='padding-left: 4ex;'>home</a>
+    </p>
+    
+    <table>
+        <thead> <tr><th>format</th><th>result</th></tr></thead>
+        <tbody id='tbody1'></tbody>
+    </table>
+
+    
+</body>
